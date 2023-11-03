@@ -38,14 +38,14 @@ const result2 = kgToGram(20) as number
 const result1 = kgToGram('10') as string
 // console.log(result1, result2);
 
-type CustomERR ={
+type CustomERR = {
     message: string
 }
-try{
+try {
 
-} catch(error){
+} catch (error) {
     // console.log((error as CustomERR).message);
-    
+
 }
 
 
@@ -56,18 +56,18 @@ type Users = {
     role: number
 }
 
-type withRole = Users & { age: number}
+type withRole = Users & { age: number }
 
-interface withRole2 extends  Users {
+interface withRole2 extends Users {
     gender: string
 }
 
-const users1: withRole ={
+const users1: withRole = {
     name: "ff",
     role: 12,
     age: 22
 }
-const users2: withRole2 ={
+const users2: withRole2 = {
     name: "ff",
     role: 12,
     gender: "male"
@@ -75,10 +75,10 @@ const users2: withRole2 ={
 
 // type Add = (num1: number, num2: number) => number
 interface Add {
-    (num1: number, num2: number) : number
+    (num1: number, num2: number): number
 }
 
-const add:Add = (num1, num2) => num1 + num2
+const add: Add = (num1, num2) => num1 + num2
 
 
 // Generic  Type
@@ -99,3 +99,53 @@ type GenericTuple<X, Y> = [X, Y]
 
 const manus: GenericTuple<string, string> = ["Ami", "Bou"]
 const manus2: GenericTuple<number, number> = [6, 9]
+
+
+// Generic interface
+
+interface Behave<T, Y = null> {
+    name: string;
+    age: number;
+    obosta: {
+        valo: boolean
+        kharap: boolean
+    };
+    phone: T;
+    Price?: Y
+}
+
+const emon: Behave<{
+    name: string;
+    company: string
+}> = {
+    name: "emm",
+    age: 23,
+    obosta: {
+        valo: false,
+        kharap: true
+    },
+    phone: {
+        name: 'samsung',
+        company: "sumsu"
+    }
+}
+type Phones ={
+    name: string;
+    dam: number;
+    free: boolean
+}
+const emon2: Behave<Phones> = {
+    name: "emm",
+    age: 23,
+    obosta: {
+        valo: false,
+        kharap: true
+    },
+    phone: {
+        name: 'samsung',
+        dam: 2000,
+        free: false
+    }
+}
+
+// we can also use default parameter

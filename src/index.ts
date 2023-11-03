@@ -129,7 +129,7 @@ const emon: Behave<{
         company: "sumsu"
     }
 }
-type Phones ={
+type Phones = {
     name: string;
     dam: number;
     free: boolean
@@ -147,5 +147,16 @@ const emon2: Behave<Phones> = {
         free: false
     }
 }
-
 // we can also use default parameter
+
+
+// Function with generic
+
+const createArrayWithGeneric = <T>(param: T): T[] => {
+    return [param]
+}
+
+const res1 = createArrayWithGeneric<number>(23)
+const res2 = createArrayWithGeneric<{num: Number; name: string}>({num: 23, name: "emon"})
+
+console.log(res2);

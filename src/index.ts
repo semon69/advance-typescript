@@ -159,4 +159,35 @@ const createArrayWithGeneric = <T>(param: T): T[] => {
 const res1 = createArrayWithGeneric<number>(23)
 const res2 = createArrayWithGeneric<{num: Number; name: string}>({num: 23, name: "emon"})
 
-console.log(res2);
+// console.log(res2);
+
+
+
+// Constraints
+
+const courseStudent = <T extends {name: string, id: number; email: string}> (student: T) => {
+    const course = "Web development"
+    return {
+        ...student,
+        course
+    }
+}
+
+const student1 = courseStudent({
+    id: 122,
+    name: "Emon",
+    email: "e@gmail.com",
+    no: 1922222
+})
+const student2 = courseStudent({
+    id: 112,
+    name: "Joy",
+    email: "j@gmail.com",
+    no: 1922222
+})
+const student3 = courseStudent({
+
+    email: "j@gmail.com",
+    no: 1922222
+})
+console.log(student3);

@@ -79,3 +79,23 @@ interface Add {
 }
 
 const add:Add = (num1, num2) => num1 + num2
+
+
+// Generic  Type
+
+type GenericType<param> = Array<param>
+
+// const people: number[] = [1, 2, 3, 4]
+// const people: Array<number> = [1, 2, 3, 4]
+const people: GenericType<number> = [1, 2, 3, 4]
+
+// const people2: string[] = ['w', 'r', 't']
+// const people2: Array<string> = ['w', 'r', 't']
+const people2: GenericType<string> = ['w', 'r', 't']
+
+// generic tuple 
+
+type GenericTuple<X, Y> = [X, Y]
+
+const manus: GenericTuple<string, string> = ["Ami", "Bou"]
+const manus2: GenericTuple<number, number> = [6, 9]

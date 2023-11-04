@@ -206,7 +206,7 @@ type vehicle = {
 type Owner = "bike" | "car" | "airplane" // Manually
 type Owner2 = keyof vehicle
 
-const getPropertyValue = <X, Y extends keyof X> (obj: X, key: Y) => {
+const getPropertyValue = <X, Y extends keyof X>(obj: X, key: Y) => {
     return obj[key];
 }
 const user = {
@@ -216,3 +216,26 @@ const user = {
 }
 const ress1 = getPropertyValue(user, "age")
 console.log(ress1);
+
+
+// Asynchronous typescript
+
+type Something = {something: "something"}
+
+const createPromise = (): Promise<Something> => {
+    return new Promise<Something>((resolve, reject) => {
+        const data: Something = {something: "something"}
+        if(data){
+            resolve(data)
+        } else{
+            reject("Error")
+        }
+    })
+}
+
+const showData  = async() => {
+    const data: Something = await createPromise()
+    console.log(data);
+     
+}
+showData()

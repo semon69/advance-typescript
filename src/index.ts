@@ -157,15 +157,15 @@ const createArrayWithGeneric = <T>(param: T): T[] => {
 }
 
 const res1 = createArrayWithGeneric<number>(23)
-const res2 = createArrayWithGeneric<{num: Number; name: string}>({num: 23, name: "emon"})
+const res2 = createArrayWithGeneric<{ num: Number; name: string }>({ num: 23, name: "emon" })
 
 // console.log(res2);
 
 
 
 // Constraints
-
-const courseStudent = <T extends {name: string, id: number; email: string}> (student: T) => {
+//  here the extended type must be available in argument and any others can be added
+const courseStudent = <T extends { name: string, id: number; email: string }>(student: T) => {
     const course = "Web development"
     return {
         ...student,
@@ -177,7 +177,8 @@ const student1 = courseStudent({
     id: 122,
     name: "Emon",
     email: "e@gmail.com",
-    no: 1922222
+    no: 1922222,
+    gf: "2 ta"
 })
 const student2 = courseStudent({
     id: 112,
@@ -186,8 +187,32 @@ const student2 = courseStudent({
     no: 1922222
 })
 const student3 = courseStudent({
-
+    id: 12,
+    name: 'eee',
     email: "j@gmail.com",
     no: 1922222
 })
-console.log(student3);
+// console.log(student3);
+
+
+// Generic constraint with keyOf operator
+
+type vehicle = {
+    bike: string;
+    car: string;
+    airplane: string;
+}
+
+type Owner = "bike" | "car" | "airplane" // Manually
+type Owner2 = keyof vehicle
+
+const getPropertyValue = <X, Y extends keyof X> (obj: X, key: Y) => {
+    return obj[key];
+}
+const user = {
+    name: "emon",
+    age: 24,
+    gender: "amle"
+}
+const ress1 = getPropertyValue(user, "age")
+console.log(ress1);

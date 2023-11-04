@@ -286,3 +286,42 @@ const calc2: AreaString2<{height: number; width: string}> = {
     height: 12,
     width: "13"
 }
+
+
+// Utilities Type
+
+// Pick
+type Person ={
+    name: string;
+    age?: number;
+    email?: string;
+    contact: string;
+}
+type NameAge = Pick<Person, "name" | "age">
+
+// Omit 
+type ContactInfo = Omit<Person, "name" | "age">
+
+// Required
+// it makes every key required
+type PersonRequired = Required<Person>
+
+//  Partial 
+// It makes every key optional, 
+type PersonPartial = Partial<Person>
+
+// Record
+// we can add multiple key and value that we want, it is dynamic
+type MyObj = Record<string, string>
+
+const obj: MyObj = {
+    a: "stt",
+    b: "dsd",
+    buj: "12"
+}
+
+const emptyObj: Record<string, unknown> = {
+    name: 'emojn',
+    age: 23,
+    married: false
+}

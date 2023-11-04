@@ -215,7 +215,7 @@ const user = {
     gender: "amle"
 }
 const ress1 = getPropertyValue(user, "age")
-console.log(ress1);
+// console.log(ress1);
 
 
 // Asynchronous typescript
@@ -235,7 +235,54 @@ const createPromise = (): Promise<Something> => {
 
 const showData  = async() => {
     const data: Something = await createPromise()
-    console.log(data);
+    // console.log(data);
      
 }
 showData()
+
+
+// Conditional Type
+
+type a1 = null
+type b1 = string
+
+type X = a1 extends null ? true : false
+type y = b1 extends undefined ? true : a1 extends number ? any : false
+
+
+type Sheikh = {
+    car: boolean;
+    ship: string;
+    plane: string;
+}
+
+type CheckVehicle<T> = T extends keyof Sheikh ? true : false
+
+type Hasplane = CheckVehicle<"bike">
+
+
+//  Mapped types
+
+type AreaNumber = {
+    height: number;
+    width: number;
+}
+
+type AreaString = {
+    [key in keyof AreaNumber] : string
+}
+
+const calc: AreaString = {
+    height: "13",
+    width: "12"
+}
+
+// If we need multiple type in one arguments
+type AreaString2<T> = {
+    [key in keyof T] : T[key]
+}
+
+const calc2: AreaString2<{height: number; width: string}> = {
+    height: 12,
+    width: "13"
+}
